@@ -1,0 +1,32 @@
+/*----------------------------- -----------------------------------------------------------------------------------*/
+vector<ll> sieve(ll n) //seive of erathonesis for prime nos //o(nloglogn):tc
+{
+    int *arr = new int[n + 1]();   // ll arr[n+1]{0} ;
+    vector<ll> vec;
+    for (ll i = 2; i <= n; i++)
+        if (arr[i] == 0)
+        {
+            vec.push_back(i);
+            for (ll j = i * i; j <= n; j += i)
+                arr[j] = 1;
+        }
+    return vec;
+}
+/*----------------------------------------------------------------------------------------------------------------*/
+vector<ll> sieve1(ll n) // seive for primefactors
+{ 
+   vector<ll>spf(n+1);
+  rep(i,0,n+1) {
+    spf[i] = i ;
+  }
+  for(ll i = 2 ; i*i<=n; i++) {
+    if(spf[i]==i) {
+      for(ll j = i*i; j<=n; j+=i) {
+        if(j == spf[j]) {
+          spf[j] = i ; 
+        }
+      }
+    }
+  }
+   return spf; 
+}
